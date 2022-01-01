@@ -14,7 +14,7 @@ const (
 	HSUPAAt      AccessTechnology = 1 << 7
 	HSPAAt       AccessTechnology = 1 << 8
 	PLUSAt       AccessTechnology = 1 << 9
-	OneXRTAt     AccessTechnology = 1 << 10
+	OneXRTTAt    AccessTechnology = 1 << 10
 	EVDO0At      AccessTechnology = 1 << 11
 	EVDOAAt      AccessTechnology = 1 << 12
 	EVDOBAt      AccessTechnology = 1 << 13
