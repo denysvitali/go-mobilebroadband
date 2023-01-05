@@ -108,10 +108,6 @@ func (m *MobileBroadband) Status() ([]Status, error) {
 			OperatorCode:      modem.getOperatorCode(),
 			OperatorName:      modem.getOperatorName(),
 		}
-		signals := []string{"Lte", "Nr5g", "Umts", "Cdma", "Rate"}
-		for _, s := range signals {
-			fmt.Printf("%s: %s\n", s, modem.getSignal(s))
-		}
 		statuses = append(statuses, status)
 	}
 
@@ -179,15 +175,9 @@ func (m Modem) SimpleStatus() (*SimpleStatus, error) {
 	return &statusOutput, nil
 }
 
-func (m Modem) getSignal(technology string) string {
-	var signal interface{}
-	p, err := m.obj.GetProperty(fmt.Sprintf("org.freedesktop.ModemManager1.Modem.Signal.%s", technology))
-	if err != nil {
-		return ""
-	}
-	signal = p.Value()
-
-	return fmt.Sprintf("%+v", signal)
+func (m Modem) SetupPeriodicPolling(rateInSeconds uint) error {
+	err := m.obj.Call("org.freedesktop.ModemManager1.Modem.Signal.Setup", 0, rateInSeconds).Store()
+	return err
 }
 
 func (m Modem) getOperatorName() string {

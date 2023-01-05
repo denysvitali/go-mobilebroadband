@@ -21,3 +21,14 @@ const (
 	LTEAt        AccessTechnology = 1 << 14
 	FiveGNRAt    AccessTechnology = 1 << 15
 )
+
+type Technology string
+
+const (
+	TechnologyCdma Technology = "Cdma"
+	TechnologyEvdo Technology = "Evdo"
+	TechnologyGsm  Technology = "Gsm"
+	TechnologyUmts Technology = "Umts"
+	TechnologyLte  Technology = "Lte"
+	TechnologyNr5g Technology = "Nr5g"
+)
